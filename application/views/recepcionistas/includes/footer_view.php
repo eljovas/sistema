@@ -53,7 +53,7 @@ $(function () {
 		var motivo    = $('#motivo').val();
 		var doctor    = $('#doctor').val();
 		var telefono_contacto = $('#telefono').val();
-		$.post( "http://sistema.dermatologica.org/index.php/clients/savequickrecepcion/", { nombre: nombre, apellidos: apellidos, motivo: motivo, doctor:doctor, telefono_contacto:telefono_contacto }).done(function( data ) {
+		$.post( "<?php echo base_url(); ?>index.php/clients/savequickrecepcion/", { nombre: nombre, apellidos: apellidos, motivo: motivo, doctor:doctor, telefono_contacto:telefono_contacto }).done(function( data ) {
 			var returned = jQuery.parseJSON( data );
 			//$("#paciente_id").val(returned.id);
 			//$("#paciente").val(returned.nombre);
@@ -90,7 +90,7 @@ $(function () {
 
 		$.ajax({
 			type: "POST",
-			url: "http://sistema.dermatologica.org/index.php/citas/"+destino,
+			url: "<?php echo base_url(); ?>index.php/citas/"+destino,
 			data: { tratamiento: tratamiento, paciente: paciente, atendido:atendido,fecha:fecha,start:start,end:end,comentarios:comentarios,label:label }
 		})
 		.done(function(  ) {
@@ -131,7 +131,7 @@ $('.combobox').combobox();
 		$("#listener_cancel").show();
 		$(this).attr("disabled",true);
 		var id = $("#idcita").val();
-		$.get( "http://sistema.dermatologica.org/index.php/citas/cancelar/"+id);
+		$.get( "<?php echo base_url(); ?>index.php/citas/cancelar/"+id);
 		$("#listener_cancel").hide();
 		$(this).attr("disabled",false);
     
@@ -143,7 +143,7 @@ $('.combobox').combobox();
 	$('#editarcita').click(function() {
 		console.log("editando");
 		var id = $("#idcita").val();
-		document.location.href='http://sistema.dermatologica.org/index.php/citas/editar/'+id;
+		document.location.href='<?php echo base_url(); ?>index.php/citas/editar/'+id;
 	});
 
 	$('#datetimepicker1').datetimepicker({ pickTime: false });
@@ -209,7 +209,7 @@ function cargaCosmetologas(){
 		$('#botones-cita-actual').hide();
 		$('#botones-nuevo-paciente').hide();
 		$('#botones-cita-nueva').show();
-		$.get( "http://sistema.dermatologica.org/index.php/cosmetologas/getById/"+resourceId, function( data ) {
+		$.get( "<?php echo base_url(); ?>index.php/cosmetologas/getById/"+resourceId, function( data ) {
 			var mes= parseInt(start.getMonth())+1;
 			var fecha_chunks = start.getFullYear()+"-"+mes + "-" + start.getDate();
 			var hora1_chunks = start.getHours()+":"+start.getMinutes() + ":" + "00";
@@ -279,7 +279,7 @@ function cargaCosmetologas(){
 		var id_cita = chunks[6];
 		$("#idcita").val(id_cita);
 		//$("#tipocita").val(tipo_cita); //ESTE MERO
-		$.getJSON( 'http://sistema.dermatologica.org/index.php/citas/getById/'+id_cita, function( json ) {
+		$.getJSON( '<?php echo base_url(); ?>index.php/citas/getById/'+id_cita, function( json ) {
 		$('#myModal').modal();
 		$('#botones-cita-actual').show();
 		$('#botones-cita-nueva').hide();
@@ -338,7 +338,7 @@ function cargaCosmetologas(){
 			$('#calendarCosmetologa').fullCalendar('changeView', 'resourceDay');
 		}
 	},
-	events: 'http://sistema.dermatologica.org/index.php/citas/calendarCosmetologas'
+	events: '<?php echo base_url(); ?>index.php/citas/calendarCosmetologas'
 	});
 }
 
@@ -373,7 +373,7 @@ function cargaDoctores() {
 		$('#botones-cita-actual').hide();
 		$('#botones-nuevo-paciente').hide();
 		$('#botones-cita-nueva').show();
-		$.get( "http://sistema.dermatologica.org/index.php/cosmetologas/getById/"+resourceId, function( data ) {
+		$.get( "<?php echo base_url(); ?>index.php/cosmetologas/getById/"+resourceId, function( data ) {
 			var mes= parseInt(start.getMonth())+1;
 			var fecha_chunks = start.getFullYear()+"-"+mes + "-" + start.getDate();
 			var hora1_chunks = start.getHours()+":"+start.getMinutes() + ":" + "00";
@@ -443,7 +443,7 @@ function cargaDoctores() {
 			var chunks = url.split("/"); 
 			var id_cita = chunks[6];
 			$("#idcita").val(id_cita);
-			$.getJSON( 'http://sistema.dermatologica.org/index.php/citas/getById/'+id_cita, function( json ) {
+			$.getJSON( '<?php echo base_url(); ?>index.php/citas/getById/'+id_cita, function( json ) {
 
 				$('#myModal').modal();
 				$('#botones-cita-actual').show();
@@ -505,7 +505,7 @@ if (isset($doctores) && !empty($doctores)) {
                 $('#calendarDoctor').fullCalendar('changeView', 'resourceDay');
             }
         },
-     events: 'http://sistema.dermatologica.org/index.php/citas/calendarDoctores'
+     events: '<?php echo base_url(); ?>index.php/citas/calendarDoctores'
     });
 
   };
