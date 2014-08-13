@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<RECORDS>
+<RECORD>
+<Name>Mexico</Name>
+<Code>MEX</Code>
+<Capital>Mexico City</Capital>
+<Province>Distrito Federal</Province>
+<Area>1972550</Area>
+<Population>95772462</Population>
+</RECORD>
+<RECORD>
+<Name>United States</Name>
+<Code>USA</Code>
+<Capital>Washington</Capital>
+<Province>Distr. Columbia</Province>
+<Area>9372610</Area>
+<Population>266476278</Population>
+</RECORD>
+<RECORD>
+<Name>Canada</Name>
+<Code>CDN</Code>
+<Capital>Ottawa</Capital>
+<Province>Ontario</Province>
+<Area>9976140</Area>
+<Population>28820671</Population>
+</RECORD>
+</RECORDS>
